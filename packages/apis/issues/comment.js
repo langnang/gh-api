@@ -1,4 +1,4 @@
-import axios from "./../../plugins/axios";
+import axios from "../../plugins/axios";
 
 const gh_issue_comment = function({ owner, repo, issue_number }) {
   return {

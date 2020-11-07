@@ -2,7 +2,7 @@ module.exports = {
   outputDir: "dist",
   publicPath: process.env.NODE_ENV === "production" ? "/gh-api/" : "/",
   devServer: {
-    port: 9100, // 自定义端口
+    port: 9000, // 自定义端口
   },
   // 修改 src 为 examples
   pages: {
