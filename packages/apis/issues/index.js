@@ -7,10 +7,18 @@ export const gh_issue_list = ({ owner, repo }) =>
 export const gh_issue_info = ({ owner, repo, issue_number }) =>
   axios.get(`/repos/${owner}/${repo}/issues/${issue_number}`);
 
-const gh_issue = function({ owner, repo }) {
+const gh_issue = function(path) {
+  const _owner = path.owner;
+  const _repo = path.repo;
   return {
-    list: () => gh_issue_list({ owner, repo }),
-    info: ({ issue_number }) => gh_issue_info({ owner, repo, issue_number }),
+    list: (path) =>
+      gh_issue_list({ owner: path.owner || _owner, repo: path.repo || _repo }),
+    info: (path) =>
+      gh_issue_info({
+        owner: path.owner || _owner,
+        repo: path.repo || _repo,
+        issue_number: path.issue_number,
+      }),
     create: () => {},
     update: () => {},
     lock: () => {},
