@@ -11,6 +11,7 @@ axios.interceptors.request.use(
   },
   function(error) {
     // 对请求错误做些什么
+    console.log(error);
     return Promise.reject(error);
   }
 );
@@ -24,6 +25,7 @@ axios.interceptors.response.use(
   },
   function(error) {
     // 对响应错误做点什么
+    console.log(error);
     return Promise.reject(error);
   }
 );

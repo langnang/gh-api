@@ -1,4 +1,4 @@
-import axios from "../../plugins/axios";
+import axios from "../plugins/axios";
 
 const gh_auth_login = (config) =>
   axios({
@@ -11,9 +11,9 @@ const gh_auth_login = (config) =>
     },
   });
 
-const gh_oauth = () => {
+const gh_auth = () => {
   return {
     login: (config) => gh_auth_login(config),
   };
 };
-export default gh_oauth;
+export default gh_auth;

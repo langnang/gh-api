@@ -6,7 +6,6 @@
 
 <script>
 import gh_api from "./../packages";
-console.log(gh_api({}));
 export default {
   name: "App",
   components: {},
@@ -14,6 +13,15 @@ export default {
     return {
       gh_api,
     };
+  },
+  mounted() {
+    gh_api()
+      .comments()
+      .list({
+        owner: "langnang",
+        repo: "AudioPlayer",
+        issue_number: 7,
+      });
   },
 };
 </script>

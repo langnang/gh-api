@@ -1,15 +1,27 @@
-import gh_issues from "./apis/issues/index";
-import gh_repos from "./apis/repos/index";
-import gh_auth from "./apis/auth/index";
+import gh_issues from "./apis/issues";
+import gh_repos from "./apis/repos";
+import gh_auth from "./apis/auth";
+import gh_comments from "./apis/comments";
 
-const gh_api = function(path) {
-  const _owner = path.owner;
-  const _repo = path.repo;
+const gh_api = function(path = {}) {
+  const [_owner, _repo, _issue_number, _comment_id] = [
+    path.owner,
+    path.repo,
+    path.issue_number,
+    path.comment_id,
+  ];
   return {
-    issues: (path) =>
+    issues: (path = {}) =>
       gh_issues({ owner: _owner || path.owner, repo: _repo || path.repo }),
-    repos: (path) => gh_repos({ owne: _owner || path.owner }),
+    repos: (path = {}) => gh_repos({ owne: _owner || path.owner }),
     oauth: () => gh_auth(),
+    comments: (path = {}) =>
+      gh_comments({
+        owner: _owner || path.owner,
+        repo: _repo || path.repo,
+        issue_number: _issue_number || path.issue_number,
+        comment_id: _comment_id || path.issue_number,
+      }),
   };
 };
 
