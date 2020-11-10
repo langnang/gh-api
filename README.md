@@ -1,6 +1,8 @@
 # gh-api
 
 > [GitHub API](https://developer.github.com/v3/)
+>
+> https://docs.github.com/en
 
 ## APIs
 

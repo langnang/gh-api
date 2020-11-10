@@ -1,3 +1,5 @@
+"use strict";
+
 import axios from "axios";
 
 axios.defaults.baseURL = "https://api.github.com";
@@ -6,12 +8,10 @@ axios.defaults.baseURL = "https://api.github.com";
 axios.interceptors.request.use(
   function(config) {
     // 在发送请求之前做些什么
-    console.log(config);
     return config;
   },
   function(error) {
     // 对请求错误做些什么
-    console.log(error);
     return Promise.reject(error);
   }
 );
@@ -20,12 +20,10 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   function(response) {
     // 对响应数据做点什么
-    console.log(response.data);
-    return response.data;
+    return response;
   },
   function(error) {
     // 对响应错误做点什么
-    console.log(error);
     return Promise.reject(error);
   }
 );

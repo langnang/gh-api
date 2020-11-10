@@ -1,17 +1,21 @@
 import axios from "../plugins/axios";
-
-//
-//
 /**
  * List repositories for a user
  * @href https://developer.github.com/v3/repos/#list-repositories-for-a-user
  */
-export const gh_repo_list = ({ owner }, config) =>
+export const gh_repo_list = ({ org }, config) => {
+  let url, originUrl;
+  if (org) {
+    originUrl = "/orgs/{org}/repos";
+    url = `/orgs/${org}/repos`;
+  }
   axios({
-    url: `/users/${owner}/repos`,
+    url,
+    originUrl,
     method: "get",
     ...config,
   });
+};
 
 /**
  * Get a repository
