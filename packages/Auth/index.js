@@ -9,6 +9,9 @@ const gh_auth_login = (config) =>
       client_secret: config.data.client_secret,
       code: config.data.code,
     },
+    headers: {
+      accept: "application/json",
+    },
   });
 
 const gh_auth = () => {

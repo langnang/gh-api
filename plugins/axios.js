@@ -20,7 +20,7 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   function(response) {
     // 对响应数据做点什么
-    return response;
+    return response.data;
   },
   function(error) {
     // 对响应错误做点什么
@@ -28,3 +28,4 @@ axios.interceptors.response.use(
   }
 );
 export default axios;
+window.axios = axios;
