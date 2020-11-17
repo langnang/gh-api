@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 import Layout from "./../layout";
 
 import ErrorRoute from "./../views/error.vue";
+import issuesRoutes from "./modules/issues";
 
 Vue.use(VueRouter);
 const router = new VueRouter({
@@ -12,10 +13,26 @@ const router = new VueRouter({
     {
       path: "/",
       component: Layout,
-      meta: {
-        title: "Home",
-      },
+      children: [
+        {
+          path: "/",
+          component: () => import("./../views/home.vue"),
+          meta: { title: "Home" },
+        },
+      ],
     },
+    {
+      path: "/emojis",
+      component: Layout,
+      children: [
+        {
+          path: "get-emojis",
+          component: () => import("./../views/emojis/get-emojis.vue"),
+          meta: { title: "Get emojis" },
+        },
+      ],
+    },
+    ...issuesRoutes,
     {
       path: "*",
       component: ErrorRoute,

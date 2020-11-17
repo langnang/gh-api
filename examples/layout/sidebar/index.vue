@@ -1,14 +1,31 @@
 <template>
-  <div>
+  <div style="width:240px;float:left;">
     <el-menu
       default-active="2"
       class="el-menu-vertical-demo"
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b"
+      :router="true"
       @open="handleOpen"
       @close="handleClose"
     >
+      <el-submenu
+        v-for="item in routesList"
+        :key="item.title"
+        :index="item.title"
+      >
+        <template slot="title">
+          <span>{{ item.title }}</span>
+        </template>
+        <el-menu-item
+          v-for="i in item.children"
+          :key="i.title"
+          :index="item.path + '/' + i.path"
+        >
+          {{ i.title }}
+        </el-menu-item>
+      </el-submenu>
       <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-location"></i>
@@ -45,6 +62,59 @@
 <script>
 export default {
   name: "LayoutSidebar",
+  data() {
+    return {
+      routesList: [
+        { title: "Actions" },
+        { title: "Activity" },
+        { title: "Apps" },
+        { title: "Billing" },
+        { title: "Checks" },
+        { title: "Code scanning" },
+        { title: "Codes of conduct" },
+        {
+          title: "Emojis",
+          path: "emojis",
+          children: [
+            {
+              title: "Get emojis",
+              path: "get-emojis",
+            },
+          ],
+        },
+        { title: "GitHub Enterprise administration" },
+        { title: "Gists" },
+        { title: "Git database" },
+        { title: "Gitignore" },
+        { title: "Interactions" },
+        {
+          title: "Issues",
+          path: "issues",
+          children: [
+            {
+              title: "List repository issues",
+              path: "list-repository-issues",
+            },
+          ],
+        },
+        { title: "Licenses" },
+        { title: "Markdown" },
+        { title: "Meta" },
+        { title: "Migrations" },
+        { title: "Organizations" },
+        { title: "Projects" },
+        { title: "Pulls" },
+        { title: "Rate limit" },
+        { title: "Reactions" },
+        { title: "Repositories" },
+        { title: "SCIM" },
+        { title: "Search" },
+        { title: "Teams" },
+        { title: "Users" },
+        { title: "Permissions required for GitHub Apps" },
+      ],
+    };
+  },
   methods: {
     handleOpen(key, keyPath) {
       console.log(key, keyPath);

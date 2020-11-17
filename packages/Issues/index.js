@@ -22,14 +22,17 @@ export default {
       },
     }),
   // List repository issues
-  "GET /repos/{owner}/{repo}/issues": ({ owner, repo }) =>
-    axios({
+  "GET /repos/{owner}/{repo}/issues": ({ owner, repo }) => {
+    if (!owner) return Promise.reject("owner cannot be undefined");
+    if (!repo) return Promise.reject("repo cannot be undefined");
+    return axios({
       url: `/repos/${owner}/${repo}/issues`,
       method: "GET",
       header: {
         accept: "application/vnd.github.v3+json",
       },
-    }),
+    });
+  },
   // Create an issue
   "POST /repos/{owner}/{repo}/issues": ({ owner, repo }) =>
     axios({
@@ -66,9 +69,13 @@ export default {
       },
     }),
   // Lock an issue
-  "PUT /repos/{owner}/{repo}/issues/{issue_number}/lock": () =>
+  "PUT /repos/{owner}/{repo}/issues/{issue_number}/lock": ({
+    owner,
+    repo,
+    issue_number,
+  }) =>
     axios({
-      url: `/repos/{owner}/{repo}/issues/{issue_number}/lock`,
+      url: `/repos/${owner}/${repo}/issues/${issue_number}/lock`,
       method: "PUT",
       header: {
         accept: "application/vnd.github.v3+json",

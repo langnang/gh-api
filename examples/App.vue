@@ -5,24 +5,13 @@
 </template>
 
 <script>
-import gh_api from "./../packages";
 export default {
   name: "App",
   components: {},
   data() {
-    return {
-      gh_api,
-    };
+    return {};
   },
-  mounted() {
-    gh_api()
-      .comments()
-      .list({
-        owner: "langnang",
-        repo: "AudioPlayer",
-        issue_number: 7,
-      });
-  },
+  mounted() {},
 };
 </script>
 
@@ -36,5 +25,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 </style>
