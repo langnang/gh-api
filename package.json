@@ -1,6 +1,7 @@
 {
   "name": "@langnang/gh-api",
-  "version": "0.0.1",
+  "description": "GitHub API",
+  "version": "0.0.2",
   "main": "lib/gh-api.umd.min.js",
   "private": false,
   "scripts": {
@@ -8,33 +9,12 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "lib": "vue-cli-service build --target lib --name gh-api --dest lib packages/index.js",
-    "publish": "npm run lib && npm publish --access publish"
+    "build:publish": "npm run lib && npm publish --access publish"
   },
   "dependencies": {
-    "@octokit/core": "^3.2.1",
-    "axios": "^0.21.0",
-    "core-js": "^3.6.5",
-    "element-ui": "^2.14.0",
-    "vue": "^2.6.12",
-    "vue-router": "^3.4.8",
-    "vue-wechat-title": "^2.0.7",
-    "vuex": "^3.5.1"
+    "axios": "^0.21.0"
   },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.8",
-    "@vue/cli-plugin-eslint": "~4.5.8",
-    "@vue/cli-plugin-router": "^4.5.8",
-    "@vue/cli-plugin-vuex": "^4.5.8",
-    "@vue/cli-service": "~4.5.8",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.0.0",
-    "eslint-plugin-vue": "^7.1.0",
-    "node-sass": "^5.0.0",
-    "sass-loader": "^10.0.5",
-    "vue-cli-plugin-axios": "0.0.4",
-    "vue-cli-plugin-element": "^1.0.1",
-    "vue-template-compiler": "^2.6.12"
-  },
+  "devDependencies": {},
   "eslintConfig": {
     "root": true,
     "env": {
@@ -60,7 +40,6 @@
   ],
   "author": "langnang",
   "license": "ISC",
-  "description": "GitHub API",
   "directories": {
     "example": "examples",
     "lib": "lib"
